@@ -1,0 +1,43 @@
+<div>
+    <article>
+        <div>
+            <h2>{{post.title}}</h2>
+            <div>
+                Written by {{post.User.username}} on {{format_date createdAt}}
+            </div>
+        </div>
+        <div>
+            {{post.body}}
+        </div>
+    </article>
+    {{#if post.Comments}}
+        <section>
+            <div>
+                <h3>COMMENTS</h3>
+            </div>
+            <div>
+                {{#each post.Comments}}
+                    <div>
+                        <p>{{body}}</p>
+                        <p>
+                            - {{User.username}}, {{format_date createdAt}}
+                        </p>
+                    </div>
+                {{/each}}
+            </div>
+        </section>
+    {{/if}}
+    <form id="new-comment-form">
+        <div>
+            <h3>WRITE A COMMENT:</h3>
+        </div>
+        <div>
+            <input type="hidden" name="post-id" value="{{post.id}}"/>
+            <label for="comment-body">ENTER YOUR COMMENT</label>
+            <textarea name="comment-body"></textarea>
+            <button type="submit">SUBMIT</button>
+        </div>
+    </form>
+</div>
+
+<script src="/javascript/comment.js"
