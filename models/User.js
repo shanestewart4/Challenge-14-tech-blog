@@ -1,11 +1,10 @@
 const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
-const sequelize = require('../config/connection.js');
-
+const sequelize = require('../config/connection');
 
 // create the user model
 class User extends Model {
-    checkPW(loginPW) {
+    checkPassword(loginPW) {
         return bcrypt.compareSync(loginPW, this.password)
     }
 }
@@ -40,10 +39,8 @@ User.init(
                 updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
                 return updatedUserData;
             }
-        }
-    },
-    {
-        sequelize: sequelize,
+        },    
+        sequelize,
         timestamps: false,
         freezeTableName: true,
         underscored: true,
