@@ -11,4 +11,4 @@ function logout() {
 
 // query selector/ event listener
 
-document.querySelector("logout-link").addEventListener("click", logout);
+document.querySelector("#logout-link").addEventListener("click", logout);

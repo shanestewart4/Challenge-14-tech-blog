@@ -6,7 +6,7 @@ const loginFormHandler = async function (event) {
 
     fetch("/api/user/login", {
         method: 'POST',
-        body: json.stringify({
+        body: JSON.stringify({
             username: unEl.value,
             password: pwEl.value
         }),
@@ -20,4 +20,4 @@ const loginFormHandler = async function (event) {
 
 // listener and query selector
 
-document.querySelector("#login-form").addEventListener("sumbit", loginFormHandler);
+document.querySelector("#login-form").addEventListener("submit", loginFormHandler);
